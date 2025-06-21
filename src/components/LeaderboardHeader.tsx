@@ -22,23 +22,22 @@ const LeaderboardHeader: React.FC<LeaderboardHeaderProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <SearchBar
-        placeholder="Search player"
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-      />
-      <Dropdown
-        label="Season"
-        options={["2022", "2023", "2024"]}
-        selectedValue={season}
-        onValueChange={setSeason}
-      />
-      <Dropdown
-        label="Filter"
-        options={["Most Runs", "Average", "Strike Rate"]}
-        selectedValue={filter}
-        onValueChange={setFilter}
-      />
+      <View style={styles.left}>
+        <SearchBar
+          placeholder="Search player"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          style={styles.searchBar}
+        />
+      </View>
+      <View style={styles.right}>
+        <Dropdown
+          label="Filter"
+          options={["Most Runs", "Average", "Strike Rate"]}
+          selectedValue={filter}
+          onValueChange={setFilter}
+        />
+      </View>
     </View>
   );
 };
@@ -46,9 +45,22 @@ const LeaderboardHeader: React.FC<LeaderboardHeaderProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    gap: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 0,
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  left: {
+    flex: 1,
+    marginRight: 6,
+  },
+  right: {
+    flexDirection: "row",
+    gap: 6,
+    alignItems: "center"
+  },
+  searchBar: {
+    flex: 1,
   },
 });
 

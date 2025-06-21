@@ -6,7 +6,6 @@ interface PlayerStats {
   name: string;
   rank: number;
   matches: number;
-  innings: number;
   runs?: number; // batting
   wickets?: number; // bowling
   average: number;
@@ -27,7 +26,6 @@ const LeaderboardCard = ({ player, type }: CardProps) => {
         <Text style={styles.name}>{`${player.rank}. ${player.name}`}</Text>
         <View style={styles.stats}>
           <Text>Mat: {player.matches}</Text>
-          <Text>Inn: {player.innings}</Text>
           {type === 'batting' ? (
             <>
               <Text>Runs: {player.runs}</Text>
@@ -36,9 +34,8 @@ const LeaderboardCard = ({ player, type }: CardProps) => {
             </>
           ) : (
             <>
-              <Text>Wkts: {player.wickets}</Text>
+              <Text>Wickets: {player.wickets}</Text>
               <Text>Eco: {player.economy}</Text>
-              <Text>Avg: {player.average}</Text>
               <Text>SR: {player.strikeRate}</Text>
             </>
           )}

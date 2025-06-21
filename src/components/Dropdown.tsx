@@ -19,14 +19,16 @@ const Dropdown = ({ label, options, selectedValue, onValueChange }: DropdownProp
   const [visible, setVisible] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
-      <TouchableOpacity onPress={() => setVisible(true)} style={styles.selector}>
-        <Text style={styles.selectedText}>{selectedValue}</Text>
+    <View>
+      <TouchableOpacity onPress={() => setVisible(true)} style={styles.compactSelector}>
+        <Text style={styles.compactText}>{label} ▼</Text>
       </TouchableOpacity>
 
       <Modal transparent visible={visible} animationType="fade">
-        <TouchableOpacity style={styles.modalBackground} onPress={() => setVisible(false)}>
+        <TouchableOpacity
+          style={styles.modalBackground}
+          onPress={() => setVisible(false)}
+        >
           <View style={styles.modalContent}>
             <FlatList
               data={options}
@@ -39,7 +41,9 @@ const Dropdown = ({ label, options, selectedValue, onValueChange }: DropdownProp
                     setVisible(false);
                   }}
                 >
-                  <Text>{item}</Text>
+                  <Text style={item === selectedValue ? styles.selectedOptionText : undefined}>
+                    {item}
+                  </Text>
                 </TouchableOpacity>
               )}
             />
@@ -51,23 +55,18 @@ const Dropdown = ({ label, options, selectedValue, onValueChange }: DropdownProp
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 5,
-  },
-  label: {
-    fontSize: 14,
-    fontWeight: "600",
-    marginBottom: 4,
-  },
-  selector: {
+  compactSelector: {
+    paddingHorizontal: 8,
+    paddingVertical: 6,
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 8,
-    padding: 10,
+    borderRadius: 6,
     backgroundColor: "#fff",
+    alignItems: "center",
   },
-  selectedText: {
-    fontSize: 16,
+  compactText: {
+    fontSize: 14,
+    fontWeight: "500",
     color: "#333",
   },
   modalBackground: {
@@ -86,6 +85,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderBottomColor: "#eee",
     borderBottomWidth: 1,
+  },
+  selectedOptionText: {
+    fontWeight: "bold",
+    color: "#007aff",
   },
 });
 

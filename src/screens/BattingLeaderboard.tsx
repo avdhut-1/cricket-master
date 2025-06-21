@@ -10,21 +10,19 @@ const BattingLeaderboard = () => {
 
   const testBattingPlayers = [
     {
-      image: 'https://example.com/kohli.jpg',
+      image: 'dummyImage',
       name: 'Virat Kohli',
       rank: 1,
       matches: 14,
-      innings: 14,
       runs: 750,
       average: 57.7,
       strikeRate: 148.5,
     },
     {
-      image: 'https://example.com/gill.jpg',
+      image: 'dummyImage',
       name: 'Shubman Gill',
       rank: 2,
       matches: 14,
-      innings: 14,
       runs: 712,
       average: 54.8,
       strikeRate: 142.3,
