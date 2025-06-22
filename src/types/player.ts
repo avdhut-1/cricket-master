@@ -1,14 +1,14 @@
-// types/player.ts
-export interface Player {
-  id: string;
-  name: string;
-  image: string;
+export type LeaderboardType = 'batting' | 'bowling';
+
+export interface PlayerStats {
   rank: number;
-  matches: number;
-  innings: number;
-  runs?: number;
-  average?: number;
-  strikeRate?: number;
-  wickets?: number;
-  economy?: number;
+  name: string;
+  image: string;       // URL or local asset reference
+  team?: string;       // optional, if you want to show team under the name
+  matches: number;      
+  runs?: number;       // only for batting
+  wickets?: number;    // only for bowling
+  average: number;
+  economy?: number;    // only for bowling
+  strikeRate: number;
 }

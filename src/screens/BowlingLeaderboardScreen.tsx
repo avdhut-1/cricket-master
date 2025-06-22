@@ -17,6 +17,7 @@ const BowlingLeaderboard = () => {
         setFilter={setFilter}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        type='bowling'
       />
       {/* Example test cards */}
       <LeaderboardCard
