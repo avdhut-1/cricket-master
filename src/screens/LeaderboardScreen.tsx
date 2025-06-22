@@ -19,7 +19,7 @@ export default function LeaderboardScreen() {
 
   // filter by search (and later by `stat` & `season`)
   const filtered = raw.filter((p) =>
-    p.name.toLowerCase().includes(query.toLowerCase())
+    p.player_name.toLowerCase().includes(query.toLowerCase())
   );
 
   return (

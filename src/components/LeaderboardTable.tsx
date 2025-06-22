@@ -1,54 +1,69 @@
 // src/components/LeaderboardTable.tsx
 import React from 'react';
-import { View, Text, Image, FlatList, StyleSheet } from 'react-native';
-import { LeaderboardType, PlayerStats } from '../types/player';
+import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { LeaderboardType, Player } from '../types/player';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+import { RootStackParamList } from '../navigation/types';
+
+// --- type for navigation to PlayerStats screen ---
+type NavProp = NativeStackNavigationProp<RootStackParamList, 'PlayerStats'>;
 
 interface LeaderboardTableProps {
   type: LeaderboardType;
-  data: PlayerStats[];
+  data: Player[];
 }
 
 export default function LeaderboardTable({ type, data }: LeaderboardTableProps) {
+  // get navigation typed to our stack
+  const navigation = useNavigation<NavProp>();
   const renderHeader = () => (
     <View style={styles.row}>
-  <View style={styles.leftGroup}>
-    <Text style={styles.headerName}>PLAYER</Text>
-  </View>
-  <View style={styles.rightGroup}>
-    <Text style={styles.stat}>M</Text>
-    <Text style={styles.stat}>{type==='batting'?'R':'W'}</Text>
-    <Text style={styles.stat}>{type==='batting'?'AVG':'ECO'}</Text>
-    <Text style={styles.stat}>S/R</Text>
-  </View>
-  </View>
+      <View style={styles.leftGroup}>
+        <Text style={styles.headerName}>PLAYER</Text>
+      </View>
+      <View style={styles.rightGroup}>
+        <Text style={styles.stat}>M</Text>
+        <Text style={styles.stat}>{type==='batting'?'R':'W'}</Text>
+        <Text style={styles.stat}>{type==='batting'?'AVG':'ECO'}</Text>
+        <Text style={styles.stat}>S/R</Text>
+      </View>
+    </View>
 );
 
-  const renderItem = ({ item }: { item: PlayerStats }) => (
-    // inside your renderItem (and your header):
+  const renderItem = ({ item }: { item: Player }) => (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => 
+        //navigate and pass the full `player` object
+        navigation.navigate('PlayerStats', { player: item })
+      }>
+      <View style={styles.row}>
+        {/* LEFT GROUP: rank + avatar + name */}
+        <View style={styles.leftGroup}>
+          <Text style={styles.pos}>{item.rank}</Text>
+          <Image source={{ uri: item.avatarUrl }} style={styles.avatar} />
+          <Text style={styles.name} numberOfLines={1}>
+            {item.player_name}
+          </Text>
+      </View>
 
-<View style={styles.row}>
-  {/* LEFT GROUP: rank + avatar + name */}
-  <View style={styles.leftGroup}>
-    <Text style={styles.pos}>{item.rank}</Text>
-    <Image source={{ uri: item.image }} style={styles.avatar} />
-    <Text style={styles.name} numberOfLines={1}>
-      {item.name}
-    </Text>
-  </View>
-
-  {/* RIGHT GROUP: all stats */}
-  <View style={styles.rightGroup}>
-    <Text style={styles.stat}>{item.matches}</Text>
-    <Text style={styles.stat}>
-      {type === 'batting' ? item.runs : item.wickets}
-    </Text>
-    <Text style={styles.stat}>
-      {type === 'batting' ? item.average : item.economy}
-    </Text>
-    <Text style={styles.stat}>{item.strikeRate}</Text>
-  </View>
-</View>
-
+        {/* RIGHT GROUP: all stats */}
+        <View style={styles.rightGroup}>
+          <Text style={styles.stat}>{item.batting_stats?.matches}</Text>
+            <Text style={styles.stat}>
+              {type === 'batting' ? item.batting_stats?.runs : item.bowling_stats?.wickets}
+            </Text>
+            <Text style={styles.stat}>
+              {type === 'batting' ? item.batting_stats?.average : item.bowling_stats?.economy}
+            </Text>
+            <Text style={styles.stat}>
+              {type === 'batting' ? item.batting_stats?.strike_rate : item.bowling_stats?.strike_rate}
+            </Text>
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 
   return (

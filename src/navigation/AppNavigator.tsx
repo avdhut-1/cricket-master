@@ -7,6 +7,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignupScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
+import PlayerStatsScreen from '../screens/PlayerStatsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -22,6 +23,11 @@ const AppNavigator = () => {
           name="Leaderboard"
           component={LeaderboardScreen}
           options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="PlayerStats"
+          component={PlayerStatsScreen}
+          options={{title: 'Player Details'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
