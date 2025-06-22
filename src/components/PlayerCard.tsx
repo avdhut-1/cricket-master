@@ -1,38 +1,47 @@
-// === src/components/PlayerCard.tsx ===
+// src/components/PlayerCard.tsx
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { Player } from '../types/player';
 
 interface PlayerCardProps {
-  name: string;
-  credit: number;
+  player: Player;
+  onAdd: (p: Player) => void;
 }
 
-export const PlayerCard: React.FC<PlayerCardProps> = ({ name, credit }) => {
+export default function PlayerCard({ player, onAdd }: PlayerCardProps) {
+  const { rank, player_name, batting_stats, bowling_stats } = player;
+  // Determine role icon & stat:
+  const role = batting_stats ? 'BAT' : bowling_stats ? 'BOWL' : 'ALL';
+  const pts = batting_stats ? batting_stats.runs : bowling_stats?.wickets;
+
   return (
-    <View style={styles.card}>
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.credit}>Credit Score: {credit}</Text>
+    <View style={styles.row}>
+      <Text style={styles.rank}>{rank}</Text>
+      <Text style={styles.role}>{role}</Text>
+      <Image source={{ uri: player.avatarUrl }} style={styles.avatar} />
+      <Text style={styles.name} numberOfLines={1}>{player_name}</Text>
+      <Text style={styles.percent}>37.5%</Text>  {/* placeholder */}
+      <Text style={styles.points}>{pts}</Text>
+      <TouchableOpacity onPress={() => onAdd(player)}>
+        <AntDesign name="pluscircleo" size={20} color="#0f0" />
+      </TouchableOpacity>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  card: {
-    padding: 16,
-    marginBottom: 12,
-    backgroundColor: '#f2f2f2',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 6,
+    borderBottomWidth: 1,
+    borderColor: '#eee',
   },
-  name: {
-    fontSize: 18,
-    fontWeight: '600'
-  },
-  credit: {
-    fontSize: 16,
-    color: '#555'
-  }
+  rank: { width: 24, textAlign: 'center', color: '#555' },
+  role: { width: 32, textAlign: 'center', color: '#888', fontSize: 12 },
+  avatar: { width: 32, height: 32, borderRadius: 16, marginHorizontal: 6 },
+  name: { flex: 1, fontSize: 14, color: '#111' },
+  percent: { width: 48, textAlign: 'center', color: '#888', fontSize: 12 },
+  points: { width: 32, textAlign: 'center', color: '#000', fontWeight: '600' },
 });

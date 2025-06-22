@@ -4,6 +4,7 @@ import { Player } from '../types/player';
 export const battingData: Player[] = [
   {
     rank: 1,
+    credit_score: 8.0,
     player_name: 'Ben Stokes',
     avatarUrl: 'https://i.pravatar.cc/100?img=8', // Random avatar image
     batting_stats: {
@@ -28,6 +29,7 @@ export const battingData: Player[] = [
   },
   {
     rank: 2,
+    credit_score: 8.0,
     player_name: 'Andre Russell',
     avatarUrl: 'https://i.pravatar.cc/100?img=9', // Random avatar image
     batting_stats: {
@@ -52,6 +54,7 @@ export const battingData: Player[] = [
   },
   {
     rank: 3,
+    credit_score: 8.0,
     player_name: 'Ravindra Jadeja',
     avatarUrl: 'https://i.pravatar.cc/100?img=10', // Random avatar image
     batting_stats: {
@@ -76,6 +79,7 @@ export const battingData: Player[] = [
   },
   {
     rank: 4,
+    credit_score: 8.0,
     player_name: 'Glenn Maxwell',
     avatarUrl: 'https://i.pravatar.cc/100?img=11', // Random avatar image
     batting_stats: {
@@ -100,6 +104,7 @@ export const battingData: Player[] = [
   },
   {
     rank: 5,
+    credit_score: 8.0,
     player_name: 'Shakib Al Hasan',
     avatarUrl: 'https://i.pravatar.cc/100?img=12', // Random avatar image
     batting_stats: {
@@ -127,6 +132,7 @@ export const battingData: Player[] = [
 export const bowlingData: Player[] = [
   {
     rank: 1,
+    credit_score: 8.0,
     player_name: 'Ben Stokes',
     avatarUrl: 'https://i.pravatar.cc/100?img=8', // Random avatar image
     batting_stats: {
@@ -151,6 +157,7 @@ export const bowlingData: Player[] = [
   },
   {
     rank: 2,
+    credit_score: 8.0,
     player_name: 'Andre Russell',
     avatarUrl: 'https://i.pravatar.cc/100?img=9', // Random avatar image
     batting_stats: {
@@ -175,6 +182,7 @@ export const bowlingData: Player[] = [
   },
   {
     rank: 3,
+    credit_score: 8.0,
     player_name: 'Ravindra Jadeja',
     avatarUrl: 'https://i.pravatar.cc/100?img=10', // Random avatar image
     batting_stats: {
@@ -199,6 +207,7 @@ export const bowlingData: Player[] = [
   },
   {
     rank: 4,
+    credit_score: 8.0,
     player_name: 'Glenn Maxwell',
     avatarUrl: 'https://i.pravatar.cc/100?img=11', // Random avatar image
     batting_stats: {
@@ -223,6 +232,7 @@ export const bowlingData: Player[] = [
   },
   {
     rank: 5,
+    credit_score: 8.0,
     player_name: 'Shakib Al Hasan',
     avatarUrl: 'https://i.pravatar.cc/100?img=12', // Random avatar image
     batting_stats: {

@@ -2,6 +2,7 @@ export type LeaderboardType = 'batting' | 'bowling';
 
 export interface Player {
   rank: number;
+  credit_score: number;
   player_name: string;
   avatarUrl: string;
   batting_stats?: {

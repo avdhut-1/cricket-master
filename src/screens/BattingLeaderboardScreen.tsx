@@ -17,7 +17,7 @@ export default function BattingLeaderboardScreen() {
 
   // you’d filter battingData by query & stat here
   const filtered = battingData.filter((p) =>
-    p.name.toLowerCase().includes(query.toLowerCase())
+    p.player_name.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
