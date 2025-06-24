@@ -8,13 +8,14 @@ import ProfileScreen from '../screens/ProfileScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
 import PlayerStatsScreen from '../screens/PlayerStatsScreen';
 import MatchDayContestScreen from '../screens/MatchDayContestScreen';
+import ContestScreen from '../screens/ContestScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MatchDayContest">
+      <Stack.Navigator initialRouteName="Contest">
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Signup" component={SignUpScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Profile" component={ProfileScreen}/>
@@ -32,6 +33,11 @@ const AppNavigator = () => {
           name="MatchDayContest"                 
           component={MatchDayContestScreen}      
           options={{ headerShown: true }}       
+        />
+        <Stack.Screen
+          name="Contest"
+          component={ContestScreen}
+          options={{headerShown: true}}
         />
       </Stack.Navigator>
     </NavigationContainer>

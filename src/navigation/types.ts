@@ -6,4 +6,5 @@ export type RootStackParamList = {
   Leaderboard: undefined;
   PlayerStats: { player: Player };
   MatchDayContest: undefined;
+  Contest: undefined;
 };

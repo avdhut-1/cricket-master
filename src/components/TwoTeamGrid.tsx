@@ -27,9 +27,13 @@ export default function TwoTeamGrid({
       keyExtractor={(_, idx) => idx.toString()}
       renderItem={({ item }) => (
         <View style={styles.row}>
-          <PlayerCell player={item.left} onAdd={onAdd} />
+          <View style={styles.half}>
+            {item.left && <PlayerCell player={item.left} onAdd={onAdd}/>}
+          </View>
           <View style={styles.divider} />
-          <PlayerCell player={item.right} onAdd={onAdd} />
+          <View style={styles.half}>
+            {item.right && <PlayerCell player={item.right} onAdd={onAdd} />}
+          </View>
         </View>
       )}
       showsVerticalScrollIndicator={false}
@@ -41,6 +45,9 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  half: {
+    width: '48%',
   },
   divider: {
     width: 1,

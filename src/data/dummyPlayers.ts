@@ -133,7 +133,7 @@ export const bowlingData: Player[] = [
   {
     rank: 1,
     credit_score: 8.0,
-    player_name: 'Ben Stokes',
+    player_name: 'Ben Woakes',
     avatarUrl: 'https://i.pravatar.cc/100?img=8', // Random avatar image
     batting_stats: {
       matches: 100,
